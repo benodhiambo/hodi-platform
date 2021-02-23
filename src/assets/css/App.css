@@ -1,0 +1,539 @@
+@font-face {
+  font-family: "Bryant Pro Bold Italic";
+  src: url("./fonts/BPro/BryantPro-BoldItalic.eot");
+  src: url("./fonts/BPro/BryantPro-BoldItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-BoldItalic.woff2") format("woff2"), url("./fonts/BPro/BryantPro-BoldItalic.woff") format("woff"), url("./fonts/BPro/BryantPro-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Bold";
+  src: url("./fonts/BPro/BryantPro-Bold.eot");
+  src: url("./fonts/BPro/BryantPro-Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-Bold.woff2") format("woff2"), url("./fonts/BPro/BryantPro-Bold.woff") format("woff"), url("./fonts/BPro/BryantPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Bold Alternate";
+  src: url("./fonts/BPro/BryantPro-BoldAlternate.eot");
+  src: url("./fonts/BPro/BryantPro-BoldAlternate.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-BoldAlternate.woff2") format("woff2"), url("./fonts/BPro/BryantPro-BoldAlternate.woff") format("woff"), url("./fonts/BPro/BryantPro-BoldAlternate.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Light Alternate";
+  src: url("./fonts/BPro/BryantPro-LightAlternate.eot");
+  src: url("./fonts/BPro/BryantPro-LightAlternate.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-LightAlternate.woff2") format("woff2"), url("./fonts/BPro/BryantPro-LightAlternate.woff") format("woff"), url("./fonts/BPro/BryantPro-LightAlternate.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Light Italic";
+  src: url("./fonts/BPro/BryantPro-LightItalic.eot");
+  src: url("./fonts/BPro/BryantPro-LightItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-LightItalic.woff2") format("woff2"), url("./fonts/BPro/BryantPro-LightItalic.woff") format("woff"), url("./fonts/BPro/BryantPro-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Light";
+  src: url("./fonts/BPro/BryantPro-Light.eot");
+  src: url("./fonts/BPro/BryantPro-Light.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-Light.woff2") format("woff2"), url("./fonts/BPro/BryantPro-Light.woff") format("woff"), url("./fonts/BPro/BryantPro-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Medium";
+  src: url("./fonts/BPro/BryantPro-Medium.eot");
+  src: url("./fonts/BPro/BryantPro-Medium.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-Medium.woff2") format("woff2"), url("./fonts/BPro/BryantPro-Medium.woff") format("woff"), url("./fonts/BPro/BryantPro-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Regular";
+  src: url("./fonts/BPro/BryantPro-Regular.eot");
+  src: url("./fonts/BPro/BryantPro-Regular.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-Regular.woff2") format("woff2"), url("./fonts/BPro/BryantPro-Regular.woff") format("woff"), url("./fonts/BPro/BryantPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Medium Alternate";
+  src: url("./fonts/BPro/BryantPro-MediumAlternate.eot");
+  src: url("./fonts/BPro/BryantPro-MediumAlternate.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-MediumAlternate.woff2") format("woff2"), url("./fonts/BPro/BryantPro-MediumAlternate.woff") format("woff"), url("./fonts/BPro/BryantPro-MediumAlternate.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Medium Italic";
+  src: url("./fonts/BPro/BryantPro-MediumItalic.eot");
+  src: url("./fonts/BPro/BryantPro-MediumItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-MediumItalic.woff2") format("woff2"), url("./fonts/BPro/BryantPro-MediumItalic.woff") format("woff"), url("./fonts/BPro/BryantPro-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Regular Alternate";
+  src: url("./fonts/BPro/BryantPro-RegularAlternate.eot");
+  src: url("./fonts/BPro/BryantPro-RegularAlternate.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-RegularAlternate.woff2") format("woff2"), url("./fonts/BPro/BryantPro-RegularAlternate.woff") format("woff"), url("./fonts/BPro/BryantPro-RegularAlternate.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bryant Pro Regular Italic";
+  src: url("./fonts/BPro/BryantPro-RegularItalic.eot");
+  src: url("./fonts/BPro/BryantPro-RegularItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/BPro/BryantPro-RegularItalic.woff2") format("woff2"), url("./fonts/BPro/BryantPro-RegularItalic.woff") format("woff"), url("./fonts/BPro/BryantPro-RegularItalic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DINRoundPro-Black";
+  src: url("./fonts/DRPro/DINRoundPro-Black.eot");
+  src: local("./fonts/DRPro/DINRoundPro-Black"), url("./fonts/DRPro/DINRoundPro-Black.eot?#iefix") format("embedded-opentype"), url("./fonts/DRPro/DINRoundPro-Black.woff2") format("woff2"), url("./fonts/DRPro/DINRoundPro-Black.woff") format("woff"), url("./fonts/DRPro/DINRoundPro-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DINRoundPro-Medi";
+  src: url("./fonts/DRPro/DINRoundPro-Medi.eot");
+  src: local("./fonts/DRPro/DINRoundPro-Medi"), url("./fonts/DRPro/DINRoundPro-Medi.eot?#iefix") format("embedded-opentype"), url("./fonts/DRPro/DINRoundPro-Medi.woff2") format("woff2"), url("./fonts/DRPro/DINRoundPro-Medi.woff") format("woff"), url("./fonts/DRPro/DINRoundPro-Medi.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DINRoundPro-Light";
+  src: url("./fonts/DRPro/DINRoundPro-Light.eot");
+  src: local("./fonts/DRPro/DINRoundPro-Light"), url("./fonts/DRPro/DINRoundPro-Light.eot?#iefix") format("embedded-opentype"), url("./fonts/DRPro/DINRoundPro-Light.woff2") format("woff2"), url("./fonts/DRPro/DINRoundPro-Light.woff") format("woff"), url("./fonts/DRPro/DINRoundPro-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DINRoundPro";
+  src: url("./fonts/DRPro/DINRoundPro.eot");
+  src: local("./fonts/DRPro/DINRoundPro"), url("./fonts/DRPro/DINRoundPro.eot?#iefix") format("embedded-opentype"), url("./fonts/DRPro/DINRoundPro.woff2") format("woff2"), url("./fonts/DRPro/DINRoundPro.woff") format("woff"), url("./fonts/DRPro/DINRoundPro.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DINRoundPro-Bold";
+  src: url("./fonts/DRPro/DINRoundPro-Bold.eot");
+  src: local("./fonts/DRPro/DINRoundPro-Bold"), url("./fonts/DRPro/DINRoundPro-Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/DRPro/DINRoundPro-Bold.woff2") format("woff2"), url("./fonts/DRPro/DINRoundPro-Bold.woff") format("woff"), url("./fonts/DRPro/DINRoundPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Eurostile Extended";
+  src: url("./fonts/EE/EurostileExtended-Roman.eot");
+  src: url("./fonts/EE/EurostileExtended-Roman.eot?#iefix") format("embedded-opentype"), url("./fonts/EE/EurostileExtended-Roman.woff2") format("woff2"), url("./fonts/EE/EurostileExtended-Roman.woff") format("woff"), url("./fonts/EE/EurostileExtended-Roman.svg#EurostileExtended-Roman") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Eurostile Extended";
+  src: url("./fonts/EE/EurostileExtended-Black.eot");
+  src: url("./fonts/EE/EurostileExtended-Black.eot?#iefix") format("embedded-opentype"), url("./fonts/EE/EurostileExtended-Black.woff2") format("woff2"), url("./fonts/EE/EurostileExtended-Black.woff") format("woff"), url("./fonts/EE/EurostileExtended-Black.svg#EurostileExtended-Black") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: "Bryant Pro Regular", sans-serif;
+  color: #000000;
+  background-color: #fafafa;
+}
+
+* {
+  transition: 500ms;
+}
+*:focus {
+  outline: none;
+}
+
+#root {
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+table {
+  font-family: "DINRoundPro";
+  background-color: #5b6e92 !important;
+}
+
+form label {
+  font-size: 16px;
+}
+form input {
+  font-size: 16px;
+}
+form textarea {
+  font-size: 16px;
+}
+
+a.hodi-logo {
+  font-family: "Bryant Pro Regular", sans-serif;
+  font-size: 1.5rem;
+  line-height: 0.9rem;
+}
+
+nav.navbar {
+  font-family: "DINRoundPro-Medi", "Bryant Pro Bold", sans-serif;
+  text-transform: uppercase;
+  background-color: #0e1729;
+  color: #ffffff;
+  padding-bottom: 0.1rem;
+  padding-top: 0.1rem;
+}
+
+.app-logo.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.data-table-extensions > .data-table-extensions-filter > input.filter-text:focus,
+.data-table-extensions > .data-table-extensions-filter > input.filter-text:hover {
+  border-bottom-color: #6b6d7a98;
+}
+
+.data-table-extensions > .data-table-extensions-filter > input.filter-text,
+.data-table-extensions > .data-table-extensions-filter > input.filter-text {
+  border-bottom-color: #6b6d7a;
+}
+
+.data-table-extensions > .data-table-extensions-filter > input.filter-text::placeholder {
+  color: #0a0c16;
+  font-size: 1.3rem;
+}
+
+li:not(:last-child) a.nav-link {
+  content: " - ";
+}
+
+a.nav-link {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+ul.app-nav a.nav-link {
+  color: #afbed8;
+  font-size: 18px;
+  line-height: 1.5rem;
+  border-bottom: 2px solid #ff000000;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+ul.app-nav a.nav-link:hover {
+  border-bottom: 2px solid #d4d9eb;
+  color: #ffffff;
+  transition-duration: 500ms;
+}
+
+ul.app-nav li.nav-item {
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+}
+
+ul.app-nav a.active-app {
+  color: #cedcf5;
+  border-bottom: 2px solid #cedcf5;
+}
+
+nav.mod-head {
+  background-color: #e9f1ff;
+  border-bottom: 4px solid #1c2c4b;
+  padding-bottom: 0;
+  padding-top: 0.2rem;
+  align-items: center;
+}
+
+a.mod-brand {
+  font-family: "Bryant Pro Regular", sans-serif;
+  font-weight: 400;
+  line-height: 0.9rem;
+  color: #0e1729;
+  font-size: 1.6rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mod-head-name {
+  font-family: "Bryant Pro Regular", sans-serif;
+  font-size: 1.5rem;
+  color: #1f1f1f;
+}
+
+.mod-nav {
+  font-family: "DINRoundPro-Medi", sans-serif;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+ul.mod-nav-ul {
+  align-items: end;
+}
+
+.mod-fxn.nav-link {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: #0e1729;
+  padding-top: 0.3rem;
+  border-bottom: 4px solid transparent;
+}
+
+.mod-fxn.nav-link:hover {
+  background-color: #505050;
+  color: #e9f1ff;
+  border-bottom: 4px solid transparent;
+  transition-duration: 500ms;
+}
+
+li.nav-item a.active-module {
+  background-color: #1c2c4b;
+  color: #cedcf5;
+  border-bottom: 4px solid transparent;
+}
+
+li.nav-item a.active-module:hover {
+  opacity: 0.9;
+  color: #cedcf5;
+  border-bottom: 4px solid transparent;
+}
+
+nav.s-mod-head {
+  background-color: #fafafa;
+  border-bottom: 1px solid #a8a8a8;
+  padding-bottom: 0rem;
+  padding-top: 0.4rem;
+  align-items: center;
+}
+
+a.s-mod-brand {
+  font-family: "Bryant Pro Regular", sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 0.9rem;
+  color: #0f0f0f;
+  font-size: 1.6rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.s-mod-head-name {
+  font-family: "Bryant Pro Regular", sans-serif;
+  font-size: 1.5rem;
+  color: #cedcf5;
+}
+
+.s-mod-nav {
+  font-family: "DINRoundPro-Medi", sans-serif;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+ul.s-mod-nav-ul {
+  align-items: end;
+}
+
+li.nav-item .s-mod-fxn.nav-link {
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  color: #0f0f0f;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  border-bottom: 0px solid transparent;
+}
+
+li.nav-item .s-mod-fxn.nav-link:hover {
+  background-color: #7f90af;
+  color: #0f0f0f;
+  border-bottom: 0px solid transparent;
+  transition-duration: 500ms;
+}
+
+li.nav-item a.s-mod-fxn.active-module {
+  background-color: #a8a8a8;
+  color: #1f1f1f;
+  border: 1px 1px 0;
+}
+
+li.nav-item a.s-mod-fxn.active-module:hover {
+  opacity: 0.9;
+  color: #1f1f1f;
+  border-bottom: 0px solid transparent;
+}
+
+nav.task-head {
+  font-family: "Bryant Pro Medium", "MP-Medium", sans-serif;
+  background-color: #e9f1ff;
+  color: #0f0f0f;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #7f90af;
+  text-transform: capitalize;
+}
+
+a.task-fxn {
+  margin-right: 0.4rem;
+  margin-left: 0.4rem;
+  font-size: 1.1rem;
+  color: #333333;
+  background-color: #cecece;
+}
+
+div.task-nav li.nav-item a.task-fxn {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  padding-top: 0.07rem;
+  border: 1px solid #7f90af;
+  border-radius: 20px;
+  transition-property: border-radius;
+  transition-duration: 7000ms;
+}
+
+.nav-item a.task-fxn:hover {
+  color: #e7e7e7;
+  background-color: #324668;
+  border-bottom: 1px solid #7f90af;
+  transition-duration: 7000ms;
+}
+
+div.task-nav a.active-task {
+  background-color: #1f1f1f;
+  color: #fafafa;
+  border: 1px solid #5b6e92;
+}
+
+.page-content {
+  min-height: 350px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.alarms-header {
+  font-size: 1.5rem;
+  text-transform: capitalize !important;
+  padding-left: 5rem;
+  padding-top: 0.3rem;
+  margin-bottom: 0;
+}
+
+.table-fetch-data {
+  min-height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.table-fetch-data h3 {
+  flex: 1;
+  text-align: center;
+}
+
+.app-footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-top: 2px solid #afbed8;
+}
+.app-footer h3 {
+  color: #324668;
+  font-family: "Eurostile Extended", "Bryant Pro Bold", sans-serif;
+  font-size: 1rem;
+}
+
+.rdt_Table {
+  font-family: "DINRoundPro-Medi", sans-serif;
+  padding-right: 0.4rem;
+  padding-left: 0.4rem;
+}
+
+.rdt_TableHeader,
+.rdt_TableCol_Sortable {
+  font-family: "Bryant Pro Bold Alternate", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+div.rdt_TableHeadRow {
+  border-top: 2px solid #1f1f1f;
+  border-bottom: 3px solid #5b6e92;
+}
+
+.rdt_TableFooter {
+  border-top: 2px solid #1f1f1f;
+}
+
+.rdt_TableCell {
+  font-size: 18px;
+}
+
+div nav.rdt_Pagination {
+  font-size: 1rem;
+  font-family: "DINRoundPro", "Bryant Pro Bold", sans-serif;
+  color: #5b6e92;
+  background-color: #e9f1ff;
+  border-top: 3px solid #5b6e92;
+}
+
+div.data-table-extensions {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.app-date-range-picker {
+  font-family: "DINRoundPro-Medi", sans-serif;
+  font-size: 1.1rem;
+}
+
+.react-calendar__navigation__prev2-button {
+  border-top-left-radius: 20px;
+  transition-duration: 0ms;
+}
+
+.react-calendar__navigation__next2-button {
+  border-top-right-radius: 20px;
+  transition-duration: 0ms;
+}
+
+div.app-date-range-picker div.app-calendar {
+  font-family: "DINRoundPro-Medi", sans-serif;
+  font-size: 1.1rem;
+  background-color: #e9f1ff;
+  margin-left: 2rem;
+  border: 2px solid #a8a8a8;
+  border-radius: 20px;
+}
+
+.react-calendar__navigation {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+div.react-daterange-picker__wrapper {
+  border: 2px solid #505050;
+  border-width: 0 0 2px 0;
+}
+
+.react-daterange-picker__inputGroup {
+  padding: 0 1rem !important;
+}
+
+/*# sourceMappingURL=App.css.map */

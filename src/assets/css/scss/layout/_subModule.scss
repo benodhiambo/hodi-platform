@@ -1,0 +1,68 @@
+@use '../abstracts/utils' as ut;
+
+nav.s-mod-head {
+    background-color: ut.$grey1;
+    border-bottom: 1px solid ut.$grey4;
+    padding-bottom: .0rem;
+    padding-top: .4rem;
+    align-items: center;
+}
+
+a.s-mod-brand{
+    font-family: 'Bryant Pro Regular', sans-serif;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: .9rem;
+    color: ut.$grey8;
+    font-size: 1.6rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.s-mod-head-name {
+    font-family: 'Bryant Pro Regular', sans-serif;
+    font-size: 1.5rem;
+    color: ut.$blu2;
+}
+
+.s-mod-nav {
+    font-family: 'DINRoundPro-Medi', sans-serif;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+ul.s-mod-nav-ul {
+    align-items: end;
+}
+
+
+li.nav-item .s-mod-fxn.nav-link{
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    color: ut.$grey8;
+    padding-top: .0rem;
+    padding-bottom: .0rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    border-bottom: 0px solid transparent;
+}
+
+li.nav-item .s-mod-fxn.nav-link:hover{
+    background-color: ut.$blu4;
+    color: ut.$grey8;
+    border-bottom: 0px solid transparent;
+    transition-duration: 500ms;
+}
+
+li.nav-item a.s-mod-fxn.active-module {
+    background-color: ut.$grey4;
+    color: ut.$grey7;
+    border: 1px 1px 0;
+}
+
+li.nav-item a.s-mod-fxn.active-module:hover {
+    opacity: .9;
+    color: ut.$grey7;
+    border-bottom: 0px solid transparent;
+}
+    

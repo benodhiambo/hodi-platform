@@ -1,0 +1,39 @@
+@use '../abstracts/utils' as ut;
+
+.app-date-range-picker {
+    font-family: 'DINRoundPro-Medi', sans-serif;
+    font-size: 1.1rem;
+}
+
+// .react-calendar__navigation__arrow react-calendar__navigation__next2-button {
+.react-calendar__navigation__prev2-button {
+    border-top-left-radius: 20px;
+    transition-duration: 0ms;
+}
+
+.react-calendar__navigation__next2-button {
+    border-top-right-radius: 20px;
+    transition-duration: 0ms;
+}
+
+div.app-date-range-picker div.app-calendar {
+    font-family: 'DINRoundPro-Medi', sans-serif;
+    font-size: 1.1rem;
+    background-color: ut.$blu1;
+    margin-left: 2rem;
+    border: 2px solid ut.$grey4;
+    border-radius: 20px;
+}
+
+.react-calendar__navigation {
+    border-bottom: 1px solid ut.$grey2;
+}
+
+div.react-daterange-picker__wrapper {
+    border: 2px solid ut.$grey5;
+    border-width: 0 0 2px 0;
+}
+
+.react-daterange-picker__inputGroup {
+    padding: 0 1rem !important; 
+}

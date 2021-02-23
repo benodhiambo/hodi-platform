@@ -1,0 +1,65 @@
+@use '../abstracts/utils' as ut;
+
+nav.mod-head {
+    background-color: ut.$blu1;
+    border-bottom: 4px solid ut.$blu7;
+    padding-bottom: 0;
+    padding-top: .2rem;
+    align-items: center;
+}
+
+a.mod-brand {
+    font-family: 'Bryant Pro Regular', sans-serif;
+    font-weight: 400;
+    line-height: .9rem;
+    color: ut.$blu8;
+    font-size: 1.6rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.mod-head-name {
+    font-family: 'Bryant Pro Regular', sans-serif;
+    font-size: 1.5rem;
+    color: ut.$grey7;
+}
+
+.mod-nav {
+    font-family: 'DINRoundPro-Medi', sans-serif;
+    text-transform: uppercase;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+ul.mod-nav-ul {
+    align-items: end;
+}
+
+
+.mod-fxn.nav-link{
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: ut.$blu8;
+    padding-top: .3rem;
+    border-bottom: 4px solid transparent;
+}
+
+.mod-fxn.nav-link:hover{
+    background-color: ut.$grey5;
+    color: ut.$blu1;
+    border-bottom: 4px solid transparent;
+    transition-duration: 500ms;
+}
+
+li.nav-item a.active-module {
+    background-color: ut.$blu7;
+    color: ut.$blu2;
+    border-bottom: 4px solid transparent;
+}
+
+li.nav-item a.active-module:hover {
+    opacity: .9;
+    color: ut.$blu2;
+    border-bottom: 4px solid transparent;
+}
+    

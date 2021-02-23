@@ -1,0 +1,27 @@
+@use '../abstracts/utils' as ut;
+
+.page-content {
+    min-height: 350px;
+    padding-left: .4rem;
+    padding-right: .4rem;
+}
+
+.alarms-header {
+    font-size: 1.5rem;
+    text-transform: capitalize !important;
+    padding-left: 5rem;
+    padding-top: .3rem;
+    margin-bottom: 0;
+}
+
+.table-fetch-data {
+    min-height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    h3{
+        flex: 1;
+        text-align: center;
+    }
+}

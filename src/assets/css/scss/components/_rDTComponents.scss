@@ -1,0 +1,51 @@
+@use '../abstracts/utils' as ut;
+
+.rdt_Table {
+    font-family: 'DINRoundPro-Medi', sans-serif;
+    padding-right: .4rem;
+    padding-left: .4rem;
+}
+
+.rdt_TableHeader,
+.rdt_TableCol_Sortable {
+    font-family: 'Bryant Pro Bold Alternate', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+div.rdt_TableHeadRow {
+    border-top: 2px solid ut.$grey7;
+    border-bottom: 3px solid ut.$blu5;
+}
+
+.rdt_TableFooter {
+    border-top: 2px solid ut.$grey7;
+}
+
+.rdt_TableCell {
+    font-size:18px;
+}
+
+div nav.rdt_Pagination {
+    font-size: 1rem;
+    font-family: 'DINRoundPro', 'Bryant Pro Bold', sans-serif;
+    color: ut.$blu5;
+    background-color: ut.$blu1;
+    border-top: 3px solid ut.$blu5;
+}
+
+div.data-table-extensions {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+// rdt_TableRow
+// rdt_TableCol
+// rdt_TableCol_Sortable
+// rdt_TableCell
+// rdt_TableHeader
+// rdt_TableFooter
+// rdt_TableHead
+// rdt_TableHeadRow
+// rdt_TableBody
+// rdt_ExpanderRow

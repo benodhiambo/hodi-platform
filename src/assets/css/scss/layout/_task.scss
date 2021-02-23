@@ -1,0 +1,42 @@
+@use '../abstracts/utils' as ut;
+
+nav.task-head {
+    font-family: 'Bryant Pro Medium', 'MP-Medium', sans-serif;
+    background-color: ut.$blu1;
+    color: ut.$grey8;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid ut.$blu4;
+    text-transform: capitalize;
+}
+
+a.task-fxn {
+    margin-right: .4rem;
+    margin-left: .4rem;
+    font-size: 1.1rem;
+    color: ut.$grey6;
+    background-color: ut.$grey3;
+}
+
+div.task-nav li.nav-item a.task-fxn {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: .07rem;
+    border: 1px solid ut.$blu4;
+    border-radius: 20px;
+    transition-property: border-radius;
+    transition-duration: 7000ms;
+}
+
+.nav-item a.task-fxn:hover {
+    color: ut.$grey2;
+    background-color: ut.$blu6;
+    border-bottom: 1px solid ut.$blu4;
+    transition-duration: 7000ms;
+}
+
+div.task-nav a.active-task {
+    background-color: ut.$grey7;
+    color: ut.$grey1;
+    border: 1px solid ut.$blu5;
+}

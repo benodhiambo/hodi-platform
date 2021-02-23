@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'DINRoundPro-Black';
+    src: url('./fonts/DRPro/DINRoundPro-Black.eot');
+    src: local('./fonts/DRPro/DINRoundPro-Black'),
+        url('./fonts/DRPro/DINRoundPro-Black.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/DRPro/DINRoundPro-Black.woff2') format('woff2'),
+        url('./fonts/DRPro/DINRoundPro-Black.woff') format('woff'),
+        url('./fonts/DRPro/DINRoundPro-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINRoundPro-Medi';
+    src: url('./fonts/DRPro/DINRoundPro-Medi.eot');
+    src: local('./fonts/DRPro/DINRoundPro-Medi'),
+        url('./fonts/DRPro/DINRoundPro-Medi.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/DRPro/DINRoundPro-Medi.woff2') format('woff2'),
+        url('./fonts/DRPro/DINRoundPro-Medi.woff') format('woff'),
+        url('./fonts/DRPro/DINRoundPro-Medi.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINRoundPro-Light';
+    src: url('./fonts/DRPro/DINRoundPro-Light.eot');
+    src: local('./fonts/DRPro/DINRoundPro-Light'),
+        url('./fonts/DRPro/DINRoundPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/DRPro/DINRoundPro-Light.woff2') format('woff2'),
+        url('./fonts/DRPro/DINRoundPro-Light.woff') format('woff'),
+        url('./fonts/DRPro/DINRoundPro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINRoundPro';
+    src: url('./fonts/DRPro/DINRoundPro.eot');
+    src: local('./fonts/DRPro/DINRoundPro'),
+        url('./fonts/DRPro/DINRoundPro.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/DRPro/DINRoundPro.woff2') format('woff2'),
+        url('./fonts/DRPro/DINRoundPro.woff') format('woff'),
+        url('./fonts/DRPro/DINRoundPro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINRoundPro-Bold';
+    src: url('./fonts/DRPro/DINRoundPro-Bold.eot');
+    src: local('./fonts/DRPro/DINRoundPro-Bold'),
+        url('./fonts/DRPro/DINRoundPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/DRPro/DINRoundPro-Bold.woff2') format('woff2'),
+        url('./fonts/DRPro/DINRoundPro-Bold.woff') format('woff'),
+        url('./fonts/DRPro/DINRoundPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

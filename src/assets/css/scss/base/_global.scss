@@ -1,0 +1,44 @@
+@use '../abstracts/utils' as ut;
+
+// resets
+body {
+	font-family: 'Bryant Pro Regular', sans-serif;
+	color: ut.$black;
+    background-color: ut.$grey1;
+}
+
+* {
+	transition: 500ms;
+
+	&:focus {
+		outline: none;
+	}
+}
+#root {
+    height: 100vh;
+}
+
+a {
+	text-decoration: none;
+	margin: 0;
+	cursor: pointer;
+}
+
+table {
+	font-family: 'DINRoundPro';
+	background-color: ut.$blu5 !important;
+}
+
+form {
+	label {
+		font-size: 16px;
+	}
+
+	input {
+		font-size: 16px;
+	}
+
+	textarea {
+		font-size: 16px;
+	}
+}

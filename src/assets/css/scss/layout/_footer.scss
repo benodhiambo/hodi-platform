@@ -1,0 +1,16 @@
+@use '../abstracts/utils' as ut;
+
+.app-footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    border-top: 2px solid ut.$blu3;
+    h3 {
+        color: ut.$blu6;
+        font-family: 'Eurostile Extended', 'Bryant Pro Bold', sans-serif;
+        font-size: 1rem;
+    }
+}

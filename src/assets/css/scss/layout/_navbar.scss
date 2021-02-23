@@ -1,0 +1,69 @@
+@use '../abstracts/utils' as ut;
+
+a.hodi-logo {
+    font-family: 'Bryant Pro Regular', sans-serif;
+    font-size: 1.5rem;
+    line-height: .9rem;
+}
+
+nav.navbar{
+    font-family: 'DINRoundPro-Medi', 'Bryant Pro Bold', sans-serif;
+    text-transform: uppercase;
+    background-color: ut.$blu8;
+    color: ut.$white;
+    padding-bottom: .1rem;
+    padding-top: .1rem;
+}
+
+.app-logo.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.data-table-extensions > .data-table-extensions-filter > input.filter-text:focus,
+.data-table-extensions > .data-table-extensions-filter > input.filter-text:hover {
+  border-bottom-color: #6b6d7a98;
+}
+
+.data-table-extensions > .data-table-extensions-filter > input.filter-text,
+.data-table-extensions > .data-table-extensions-filter > input.filter-text {
+  border-bottom-color: #6b6d7a;
+}
+
+.data-table-extensions > .data-table-extensions-filter > input.filter-text::placeholder {
+    color: #0a0c16;
+    font-size: 1.3rem;
+}
+
+li:not(:last-child) a.nav-link {
+    content: " - ";
+}
+
+a.nav-link{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+ul.app-nav a.nav-link{
+    color: ut.$blu3;
+    font-size: 18px;
+    line-height: 1.5rem;
+    border-bottom: 2px solid #ff000000;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+ul.app-nav a.nav-link:hover {
+    border-bottom: 2px solid #d4d9eb;
+    color: ut.$white;
+    transition-duration: 500ms;
+}
+
+ul.app-nav li.nav-item {
+    padding-right: .2rem;
+    padding-left: .2rem;
+}
+
+ul.app-nav a.active-app {
+    color: ut.$blu2;
+    border-bottom: 2px solid ut.$blu2;
+}
