@@ -44,15 +44,9 @@ class IBSAlarmsDateRangeView extends Component {
     }
 
     getAlarmsForDateRange() {
-
         let dateOne = this.getStartingDate();
         let dateTwo = this.getEndingDate();
-
         fetchAlarmsByDateRange(dateOne, dateTwo);
-    }
-
-    componentDidMount() {
-        console.log("why not ...  ")
     }
 
     render() {

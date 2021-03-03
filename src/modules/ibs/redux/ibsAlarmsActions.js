@@ -1,6 +1,6 @@
 import axios from "axios";
 import { format, isAfter, parse, subDays, subHours } from "date-fns";
-import { ALL_ALARMS_API, DATE_RANGE_DEV } from "../../../config/apis";
+import { ALL_ALARMS_API, DATE_RANGE_API } from "../../../config/apis";
 import { appStore } from "../../../redux/appStore";
 import {
     addIBSAlarms12HrsToStore,
@@ -17,7 +17,6 @@ import {
  */
 export async function fetchNewAlarms() {
     try {
-        // let fetchedAlarms = await fetch('http://afternoon-bastion-56368.herokuapp.com/alarms/fetch/all');
         let fetchedAlarms = await fetch(ALL_ALARMS_API);
 
         let fetchedAlarmsJson = await fetchedAlarms.json();
@@ -28,10 +27,6 @@ export async function fetchNewAlarms() {
         let newAlarms = [];
         return newAlarms;
     }
-}
-
-async function getIDsFromAlarmsArray(alarmsArray) {
-    return alarmsArray.map(alarm => alarm.id);
 }
 
 /**
@@ -52,67 +47,6 @@ async function getFilteredIBSAlarmIds(newIds, currentIds) {
     });
 
     return filteredIdArray;
-}
-
-async function getAlarmsWithChangedStatus() {
-    // gets alarms from the rest api
-    let newIBSAlarms = await fetchNewAlarms();
-
-    /**
-     * checks if any alarms were returned in
-     * the array
-     */
-    if (newIBSAlarms !== undefined || newIBSAlarms.length !== 0) {
-        console.log('New Alarms Found. Processing Alarms ...');
-
-        // puts the IDs of the new alarms in an array
-        let newIds = await newIBSAlarms.alarms.map(alarm => alarm.id);
-
-        // gets the IDs of current alarms
-        let currentState = appStore.getState();
-        let currentIBSAlarms = currentState.ibsAlarms;
-        let rawCurrentIds = currentIBSAlarms.map(alarm => alarm.id);
-
-        // array to hold ids from current alarms
-        let currentIds = [];
-
-        //remove undefined values from array
-        currentIds = rawCurrentIds.filter(function (e) { return e });
-
-        /**
-         * array for alarm ids which 
-         * are in the store/state
-         */
-        let filteredIdArray = [];
-
-        //Find values that are in newAlarms and currentAlarms
-        filteredIdArray = newIds.filter(function (val) {
-            return currentIds.indexOf(val) !== -1;
-        });
-
-        let alarmsWithChangedStatus = [];
-
-        newIBSAlarms.forEach(function (alarm) {
-            filteredIdArray.forEach(function (id) {
-                if (parseInt(alarm.id) === parseInt(id)) {
-                    alarmsWithChangedStatus.push(alarm);
-                }
-            })
-        });
-        return alarmsWithChangedStatus;
-    } else {
-        console.log('No new alarms were added. return empty array');
-        let alarmsWithChangedStatus = [];
-        return alarmsWithChangedStatus;
-    }
-}
-
-async function updateExistingAlarms() {
-    let alarmsWithChangedStatus = await getAlarmsWithChangedStatus();
-
-    alarmsWithChangedStatus.forEach(function (updatedAlarm) {
-        appStore.dispatch({ type: 'UPDATE_ALARM_STATUS', payload: updatedAlarm })
-    });
 }
 
 /**
@@ -236,6 +170,7 @@ export async function fetchAlarmsByDate(alarmDate) {
 }
 
 export async function fetchAlarmsByDateRange(start, end) {
+
     const params = new URLSearchParams()
     params.append('startDate', start)
     params.append('endDate', end)
@@ -246,80 +181,19 @@ export async function fetchAlarmsByDateRange(start, end) {
         }
     }
 
-    await axios.post(DATE_RANGE_DEV, params, config)
+    return await axios.post(DATE_RANGE_API, params, config)
         .then((result) => {
-
             let fetchedAlarmsJson = result.data;
-
-            let newAlarms = fetchedAlarmsJson.message;
-
-            let alarmsForDateRange = [];
-
-            let count = 1;
-
-            newAlarms.forEach((alarm) => {
-                /**
-                 * break down each new alarm update into 
-                 * new alarms using alarm type and status
-                 */
-                let power = {}
-                
-                power.site_name = alarm.site_name
-                power.site_ip = alarm.site_ip
-                power.alarm_type = "Power Alarm"
-                power.alarm_status = alarm.power === 1 ? "Pending" : "Resolved"
-                power.alarm_severity = "Critical"
-                power.created_at = alarm.created_at
-                power.updated_at = alarm.updated_at
-                power.id = count
-                count++;
-
-                alarmsForDateRange.push(power)
-
-                let rectifier = {}
-                rectifier.site_name = alarm.site_name
-                rectifier.site_ip = alarm.site_ip
-                rectifier.alarm_type = "Rectifier Alarm"
-                rectifier.alarm_status = alarm.rectifier === 1 ? "Pending" : "Resolved"
-                rectifier.alarm_severity = "Minor"
-                rectifier.created_at = alarm.created_at
-                rectifier.updated_at = alarm.updated_at
-                rectifier.id = count
-                count++;
-
-                alarmsForDateRange.push(rectifier)
-
-                let optical = {}
-                optical.site_name = alarm.site_name
-                optical.site_ip = alarm.site_ip
-                optical.alarm_type = "Optical Alarm"
-                optical.alarm_status = alarm.optical === 1 ? "Pending" : "Resolved"
-                optical.alarm_severity = "Critical"
-                optical.created_at = alarm.created_at
-                optical.updated_at = alarm.updated_at
-                optical.id = count
-                count++;
-
-                alarmsForDateRange.push(optical)
-
-                let radio = {}
-                radio.site_name = alarm.site_name
-                radio.site_ip = alarm.site_ip
-                radio.alarm_type = "Radio Alarm"
-                radio.alarm_status = alarm.radio === 1 ? "Pending" : "Resolved"
-                radio.alarm_severity = "Critical"
-                radio.created_at = alarm.created_at
-                radio.updated_at = alarm.updated_at
-                radio.id = count
-                count++;
-
-                alarmsForDateRange.push(radio)
-            });
-            appStore.dispatch(addIBSAlarmsDateToStore(alarmsForDateRange));
+            return fetchedAlarmsJson.message;
         })
         .catch((err) => {
-            console.log(' error ... ')
+            console.log(' error 1 ... ')
             console.log(err)
+            /**
+             * return empty array if there 
+             * is no alarm within the range
+             */
+            return [];
         })
 }
 
@@ -349,91 +223,82 @@ export async function fetchAlarmsForLast30Days() {
     let startDate = removeTimestamp(t30DaysAgo)
     let endDate = removeTimestamp(todaysDate)
 
-    const params = new URLSearchParams()
-    params.append('startDate', startDate)
-    params.append('endDate', endDate)
+    /**
+     * these are the alarms to be 
+     * dispatched to the redux store
+     */
+    let alarmsFor30Days = [];
 
-    const config = {
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+    /**
+     * this are the alarms immediately 
+     * fetched from the REST API
+     */
+    let new30dayAlarms = await fetchAlarmsByDateRange(startDate, endDate)
+
+    if (new30dayAlarms.length > 0) {
+
+        let count = 1;
+
+        new30dayAlarms.forEach((alarm) => {
+            /**
+             * break down each new alarm update into 
+             * new alarms using alarm type and status
+             */
+            let power = {}
+
+            power.site_name = alarm.site_name
+            power.site_ip = alarm.site_ip
+            power.alarm_type = "Power Alarm"
+            power.alarm_status = alarm.power === 1 ? "Pending" : "Resolved"
+            power.alarm_severity = "Critical"
+            power.created_at = alarm.created_at
+            power.updated_at = alarm.updated_at
+            power.id = count
+            count++;
+
+            alarmsFor30Days.push(power)
+
+            let rectifier = {}
+            rectifier.site_name = alarm.site_name
+            rectifier.site_ip = alarm.site_ip
+            rectifier.alarm_type = "Rectifier Alarm"
+            rectifier.alarm_status = alarm.rectifier === 1 ? "Pending" : "Resolved"
+            rectifier.alarm_severity = "Minor"
+            rectifier.created_at = alarm.created_at
+            rectifier.updated_at = alarm.updated_at
+            rectifier.id = count
+            count++;
+
+            alarmsFor30Days.push(rectifier)
+
+            let optical = {}
+            optical.site_name = alarm.site_name
+            optical.site_ip = alarm.site_ip
+            optical.alarm_type = "Optical Alarm"
+            optical.alarm_status = alarm.optical === 1 ? "Pending" : "Resolved"
+            optical.alarm_severity = "Critical"
+            optical.created_at = alarm.created_at
+            optical.updated_at = alarm.updated_at
+            optical.id = count
+            count++;
+
+            alarmsFor30Days.push(optical)
+
+            let radio = {}
+            radio.site_name = alarm.site_name
+            radio.site_ip = alarm.site_ip
+            radio.alarm_type = "Radio Alarm"
+            radio.alarm_status = alarm.radio === 1 ? "Pending" : "Resolved"
+            radio.alarm_severity = "Critical"
+            radio.created_at = alarm.created_at
+            radio.updated_at = alarm.updated_at
+            radio.id = count
+            count++;
+
+            alarmsFor30Days.push(radio)
+        });
     }
-
-    await axios.post(DATE_RANGE_DEV, params, config)
-        .then((result) => {
-
-            let fetchedAlarmsJson = result.data;
-
-            let newAlarms = fetchedAlarmsJson.message;
-
-            let alarmsFor30Days = [];
-
-            let count = 1;
-
-            newAlarms.forEach((alarm) => {
-                /**
-                 * break down each new alarm update into 
-                 * new alarms using alarm type and status
-                 */
-                let power = {}
-                
-                power.site_name = alarm.site_name
-                power.site_ip = alarm.site_ip
-                power.alarm_type = "Power Alarm"
-                power.alarm_status = alarm.power === 1 ? "Pending" : "Resolved"
-                power.alarm_severity = "Critical"
-                power.created_at = alarm.created_at
-                power.updated_at = alarm.updated_at
-                power.id = count
-                count++;
-
-                alarmsFor30Days.push(power)
-
-                let rectifier = {}
-                rectifier.site_name = alarm.site_name
-                rectifier.site_ip = alarm.site_ip
-                rectifier.alarm_type = "Rectifier Alarm"
-                rectifier.alarm_status = alarm.rectifier === 1 ? "Pending" : "Resolved"
-                rectifier.alarm_severity = "Minor"
-                rectifier.created_at = alarm.created_at
-                rectifier.updated_at = alarm.updated_at
-                rectifier.id = count
-                count++;
-
-                alarmsFor30Days.push(rectifier)
-
-                let optical = {}
-                optical.site_name = alarm.site_name
-                optical.site_ip = alarm.site_ip
-                optical.alarm_type = "Optical Alarm"
-                optical.alarm_status = alarm.optical === 1 ? "Pending" : "Resolved"
-                optical.alarm_severity = "Critical"
-                optical.created_at = alarm.created_at
-                optical.updated_at = alarm.updated_at
-                optical.id = count
-                count++;
-
-                alarmsFor30Days.push(optical)
-
-                let radio = {}
-                radio.site_name = alarm.site_name
-                radio.site_ip = alarm.site_ip
-                radio.alarm_type = "Radio Alarm"
-                radio.alarm_status = alarm.radio === 1 ? "Pending" : "Resolved"
-                radio.alarm_severity = "Critical"
-                radio.created_at = alarm.created_at
-                radio.updated_at = alarm.updated_at
-                radio.id = count
-                count++;
-
-                alarmsFor30Days.push(radio)
-            });
-            appStore.dispatch(addIBSAlarms30DaysToStore(alarmsFor30Days));
-        })
-        .catch((err) => {
-            console.log(' error ... ')
-            console.log(err)
-        })
+    appStore.dispatch(addIBSAlarms30DaysToStore(alarmsFor30Days));
 }
 
 export async function fetchAlarmsForLast7Days() {
@@ -446,6 +311,9 @@ export async function fetchAlarmsForLast7Days() {
     let t7DaysAgo = subDays(new Date(), 7);
     let alarmsFor7days = [];
 
+    /**
+     * check if any alarms were retrieved ffrom the
+     */
     if (alarmsSet.length > 0) {
         // filter alarms for the last 7 days
         alarmsSet.forEach(alarm => {
@@ -467,14 +335,8 @@ export async function fetchAlarmsForLast7Days() {
                 alarmsFor7days.push(alarm);
             }
         });
-        appStore.dispatch(addIBSAlarms7DaysToStore(alarmsFor7days));
-
-    } else {
-        console.log('7 days nada')
-        console.log(alarmsSet)
     }
-
-
+    appStore.dispatch(addIBSAlarms7DaysToStore(alarmsFor7days));
 }
 
 export async function fetchAlarmsForLast24Hrs() {
@@ -488,25 +350,30 @@ export async function fetchAlarmsForLast24Hrs() {
     let t24HrsAgo = subHours(new Date(), 24);
     let alarms24Hrs = [];
 
-    // filter alarms for the last 24Hrs
-    alarmsSet.forEach(alarm => {
-        /**
-         * convert timestamp to date object
-         */
-        let alarmTimeToDate = parse(
-            alarm.updated_at,
-            'yyyy-MM-dd hh:mm:ss a',
-            new Date()
-        );
+    /**
+     * check if any alarms were retrieved ffrom the
+     */
+    if (alarmsSet.length > 0) {
+        // filter alarms for the last 24Hrs
+        alarmsSet.forEach(alarm => {
+            /**
+             * convert timestamp to date object
+             */
+            let alarmTimeToDate = parse(
+                alarm.updated_at,
+                'yyyy-MM-dd hh:mm:ss a',
+                new Date()
+            );
 
-        /**
-         * check if timestamp is 
-         * within 24 hours ago
-         */
-        if (isAfter(alarmTimeToDate, t24HrsAgo)) {
-            alarms24Hrs.push(alarm);
-        }
-    });
+            /**
+             * check if timestamp is 
+             * within 24 hours ago
+             */
+            if (isAfter(alarmTimeToDate, t24HrsAgo)) {
+                alarms24Hrs.push(alarm);
+            }
+        });
+    }
     appStore.dispatch(addIBSAlarms24HrsToStore(alarms24Hrs));
 }
 
@@ -539,5 +406,31 @@ export async function fetchAlarmsForLast12Hrs() {
             alarmsFor12Hrs.push(alarm);
         }
     });
+    appStore.dispatch(addIBSAlarms12HrsToStore(alarmsFor12Hrs));
+
+    /**
+     * check if any alarms were retrieved ffrom the
+     */
+    if (alarmsSet.length > 0) {
+        // filter alarms for the last 12Hrs
+        alarmsSet.forEach(alarm => {
+            /**
+             * convert timestamp to date object
+             */
+            let alarmTimeToDate = parse(
+                alarm.updated_at,
+                'yyyy-MM-dd hh:mm:ss a',
+                new Date()
+            );
+
+            /**
+             * check if timestamp is 
+             * within 12 hours ago
+             */
+            if (isAfter(alarmTimeToDate, t12HrsAgo)) {
+                alarmsFor12Hrs.push(alarm);
+            }
+        });
+    }
     appStore.dispatch(addIBSAlarms12HrsToStore(alarmsFor12Hrs));
 }
