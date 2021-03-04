@@ -16,6 +16,7 @@ export const UPDATED_ALARMS_API = "http://afternoon-bastion-56368.herokuapp.com/
  */
 export const ALL_ALARMS_API = "http://afternoon-bastion-56368.herokuapp.com/alarms/fetch/all";
 export const DATE_RANGE_API = "http://afternoon-bastion-56368.herokuapp.com/alarm/update/fetch/date/range";
+// export const DATE_RANGE_API = "http://9.9.9.8/apps/adc/hodi/rest/date_range_post.php";
 
 /**
  * fetch all updated alarms

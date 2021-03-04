@@ -46,13 +46,15 @@ class IBSAlarmsTypeContainer extends Component {
      * @param {string} type 
      * @returns {Array} alarms
      */
-    getAlarmsByType(type){
-        let alarms = this.props.ibsAlarms30Days.filter(alarm => alarm.alarm_type.includes(type));
-        return alarms;
+    getAlarmsByType(type) {
+        if (this.props.ibsAlarms30Days) {
+            let alarms = this.props.ibsAlarms30Days.filter(alarm => alarm.alarm_type.includes(type));
+            return alarms;
+        }
     }
 
-    componentDidMount(){
-        
+    componentDidMount() {
+
     }
 
     render() {

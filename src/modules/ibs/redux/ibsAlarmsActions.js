@@ -163,18 +163,13 @@ export async function fetchAlarmsByDateRange(start, end) {
 
     return await axios.post(DATE_RANGE_API, params, config)
         .then((result) => {
-
             let fetchedAlarmsJson = result.data;
             return fetchedAlarmsJson.message;
         })
-        .catch((err) => {
-            console.log(' error in date ... ')
-            // console.log(err)
-            /**
-             * return empty array if there 
-             * is no alarm within the range
-             */
-            return [];
+        .catch((error) => { 
+            console.log(error.response.data);  
+            console.log(error.response.status);  
+            console.log(error.response.headers); 
         })
 }
 
@@ -221,7 +216,7 @@ export async function fetchAlarmsForLast30Days() {
      */
     let new30dayAlarms = await fetchAlarmsByDateRange(startDate, endDate)
 
-    if (new30dayAlarms.length > 0) {
+    if (new30dayAlarms) {
         alarmsFor30Days = breakDownAlarmsArray(new30dayAlarms);
     }
     appStore.dispatch(addIBSAlarms30DaysToStore(alarmsFor30Days));
@@ -428,9 +423,7 @@ export async function fetchAlarmsForRange(startDate, endDate) {
      */
     let rangeAlarms = await fetchAlarmsByDateRange(startDate, endDate)
 
-    if (rangeAlarms.length > 0) {
-        console.log('please do runss')
-        console.log(rangeAlarms)
+    if (rangeAlarms) {
         alarmsForRange = breakDownAlarmsArray(rangeAlarms);
     }
     appStore.dispatch(addIBSAlarmsRangeToStore(alarmsForRange));

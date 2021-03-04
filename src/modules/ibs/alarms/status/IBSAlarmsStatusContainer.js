@@ -46,13 +46,15 @@ class IBSAlarmsStatusContainer extends Component {
      * @param {string} status 
      * @returns {Array} alarms
      */
-    getAlarmsByStatus(status){
-        let alarms = this.props.ibsAlarms30Days.filter(alarm => alarm.alarm_status.includes(status));
-        return alarms;
+    getAlarmsByStatus(status) {
+        if (this.props.ibsAlarms30Days) {
+            let alarms = this.props.ibsAlarms30Days.filter(alarm => alarm.alarm_status.includes(status));
+            return alarms;
+        }
     }
 
-    componentDidMount(){
-        
+    componentDidMount() {
+
     }
 
     render() {
@@ -88,10 +90,10 @@ class IBSAlarmsStatusContainer extends Component {
                 </Navbar>
                 <Switch>
                     <Route exact path={this.nav.defaultPaths}>
-                        <IBSAlarmsStatusPendingView pendingAlarms={this.getAlarmsByStatus('Pending')}/>
+                        <IBSAlarmsStatusPendingView pendingAlarms={this.getAlarmsByStatus('Pending')} />
                     </Route>
                     <Route exact path="/ibs/alarms/status/closing">
-                        <IBSAlarmsStatusClosedView closedAlarms={this.getAlarmsByStatus('Resolved')}/>
+                        <IBSAlarmsStatusClosedView closedAlarms={this.getAlarmsByStatus('Resolved')} />
                     </Route>
                 </Switch>
             </Router>

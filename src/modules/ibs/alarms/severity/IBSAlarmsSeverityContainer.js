@@ -55,8 +55,7 @@ class IBSAlarmsSeverityContainer extends Component {
      * @returns {Array} alarms
      */
     getAlarmsBySeverity(severity) {
-        if (this.props.ibsAlarms30.length !== undefined) {
-
+        if (this.props.ibsAlarms30) {
             let alarms = this.props.ibsAlarms30.filter(alarm => alarm.alarm_severity.includes(severity));
             return alarms;
         }
