@@ -24,7 +24,7 @@ export async function fetchNewAlarms() {
         let newAlarms = fetchedAlarmsJson.alarms;
         return newAlarms;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         let newAlarms = [];
         return newAlarms;
     }
@@ -149,26 +149,6 @@ export function getAlarmsFromStoreByDate(alarmDate) {
     return alarmsArray;
 }
 
-export async function fetchAlarmsByDate(alarmDate) {
-
-    let fetchedAlarms = await fetch("http://9.9.9.8/apps/adc/hodi/rest/alarms_post.php", {
-        method: "POST",
-        body: JSON.stringify({
-            startDate: alarmDate,
-        }),
-    });
-
-    let fetchedAlarmsJson = await fetchedAlarms.json();
-    let newAlarms = fetchedAlarmsJson.alarms;
-
-    let alarmsForThisDate = [];
-
-    newAlarms.forEach((alarm) => {
-        alarmsForThisDate.push(alarm)
-    });
-    appStore.dispatch(addIBSAlarmsDateToStore(alarmsForThisDate));
-}
-
 export async function fetchAlarmsByDateRange(start, end) {
 
     const params = new URLSearchParams()
@@ -183,12 +163,13 @@ export async function fetchAlarmsByDateRange(start, end) {
 
     return await axios.post(DATE_RANGE_API, params, config)
         .then((result) => {
+
             let fetchedAlarmsJson = result.data;
             return fetchedAlarmsJson.message;
         })
         .catch((err) => {
-            console.log(' error 1 ... ')
-            console.log(err)
+            console.log(' error in date ... ')
+            // console.log(err)
             /**
              * return empty array if there 
              * is no alarm within the range
@@ -448,6 +429,8 @@ export async function fetchAlarmsForRange(startDate, endDate) {
     let rangeAlarms = await fetchAlarmsByDateRange(startDate, endDate)
 
     if (rangeAlarms.length > 0) {
+        console.log('please do runss')
+        console.log(rangeAlarms)
         alarmsForRange = breakDownAlarmsArray(rangeAlarms);
     }
     appStore.dispatch(addIBSAlarmsRangeToStore(alarmsForRange));

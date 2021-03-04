@@ -6,18 +6,20 @@ import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import { tableColumns } from "../../config";
 import { format } from "date-fns";
 import { connect } from "react-redux";
-import { fetchAlarmsByDate, fetchAlarmsForRange } from "../../redux/ibsAlarmsActions";
+import { fetchAlarmsForRange } from "../../redux/ibsAlarmsActions";
 import { globalRowStyles } from "../../../../config";
 
 class IBSAlarmsDateRangeView extends Component {
     dateSelected = {
         date: [new Date(), new Date()]
-    }; 
+    };
 
     onChange = date => {
-        this.dateSelected.date[0] = date[0];
-        this.dateSelected.date[1] = date[1];
-        this.getAlarmsForDateRange();
+        if (date !== null) {
+            this.dateSelected.date[0] = date[0];
+            this.dateSelected.date[1] = date[1];
+            this.getAlarmsForDateRange();
+        }
     }
 
     getStartingDate() {
@@ -28,10 +30,6 @@ class IBSAlarmsDateRangeView extends Component {
     getEndingDate() {
         let endDate = this.dateSelected.date[1];
         return format(endDate, 'yyyy-MM-dd');
-    }
-
-    getAlarmsForDate(chosenDate) {
-        fetchAlarmsByDate(chosenDate);
     }
 
     getAlarmsForDateRange() {
