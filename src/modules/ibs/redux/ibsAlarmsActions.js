@@ -1,5 +1,6 @@
 import axios from "axios";
 import { format, isAfter, parse, subDays, subHours } from "date-fns";
+import FormData from "form-data";
 import { ALL_ALARMS_API, DATE_RANGE_API } from "../../../config/apis";
 import { appStore } from "../../../redux/appStore";
 import {
@@ -24,7 +25,7 @@ export async function fetchNewAlarms() {
         let newAlarms = fetchedAlarmsJson.alarms;
         return newAlarms;
     } catch (error) {
-        // console.log(error);
+        console.log(error.response.data);
         let newAlarms = [];
         return newAlarms;
     }
@@ -151,9 +152,9 @@ export function getAlarmsFromStoreByDate(alarmDate) {
 
 export async function fetchAlarmsByDateRange(start, end) {
 
-    const params = new URLSearchParams()
-    params.append('startDate', start)
-    params.append('endDate', end)
+    const params = new FormData();
+    params.append('from', start)
+    params.append('to', end)
 
     const config = {
         headers: {
@@ -166,10 +167,8 @@ export async function fetchAlarmsByDateRange(start, end) {
             let fetchedAlarmsJson = result.data;
             return fetchedAlarmsJson.message;
         })
-        .catch((error) => { 
-            console.log(error.response.data);  
-            console.log(error.response.status);  
-            console.log(error.response.headers); 
+        .catch((error) => {
+            console.log(error.response.data);
         })
 }
 
