@@ -16,7 +16,6 @@ import {
     NavLink,
 } from 'reactstrap';
 import IBSAlarmsDateContainer from './date/IBSAlarmsDateContainer';
-import IBSAlarmsAllContainer from './IBSAlarmsAllContainer';
 import IBSAlarmsSeverityContainer from './severity/IBSAlarmsSeverityContainer';
 import IBSAlarmsStatusContainer from './status/IBSAlarmsStatusContainer';
 import IBSAlarmsTypeContainer from './type/IBSAlarmsTypeContainer';

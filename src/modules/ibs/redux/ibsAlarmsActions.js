@@ -8,6 +8,7 @@ import {
     addIBSAlarms30DaysToStore,
     addIBSAlarms7DaysToStore,
     addIBSAlarmsDateToStore,
+    addIBSAlarmsRangeToStore,
     addIBSAlarmToStore
 } from "./ibsAlarmsActionCreators";
 
@@ -165,7 +166,6 @@ export async function fetchAlarmsByDate(alarmDate) {
     newAlarms.forEach((alarm) => {
         alarmsForThisDate.push(alarm)
     });
-
     appStore.dispatch(addIBSAlarmsDateToStore(alarmsForThisDate));
 }
 
@@ -198,14 +198,19 @@ export async function fetchAlarmsByDateRange(start, end) {
 }
 
 /**
-     * removes the timestamp portion
-     * of a date object
-     * @param {*} dateObject 
-     */
+ * removes the timestamp portion
+ * of a date object
+ * @param {*} dateObject 
+ */
 export function removeTimestamp(dateObject) {
     return format(dateObject, "yyyy-MM-dd");
 }
 
+/**
+ * initializes the redux store with alarms
+ * and breaks down the store on to alarms 
+ * different time periods
+ */
 export async function setUpAlarmsStores() {
     await fetchAlarmsForLast30Days().then(async () => {
         await fetchAlarmsForLast7Days();
@@ -236,71 +241,85 @@ export async function fetchAlarmsForLast30Days() {
     let new30dayAlarms = await fetchAlarmsByDateRange(startDate, endDate)
 
     if (new30dayAlarms.length > 0) {
-
-        let count = 1;
-
-        new30dayAlarms.forEach((alarm) => {
-            /**
-             * break down each new alarm update into 
-             * new alarms using alarm type and status
-             */
-            let power = {}
-
-            power.site_name = alarm.site_name
-            power.site_ip = alarm.site_ip
-            power.alarm_type = "Power Alarm"
-            power.alarm_status = alarm.power === 1 ? "Pending" : "Resolved"
-            power.alarm_severity = "Critical"
-            power.created_at = alarm.created_at
-            power.updated_at = alarm.updated_at
-            power.id = count
-            count++;
-
-            alarmsFor30Days.push(power)
-
-            let rectifier = {}
-            rectifier.site_name = alarm.site_name
-            rectifier.site_ip = alarm.site_ip
-            rectifier.alarm_type = "Rectifier Alarm"
-            rectifier.alarm_status = alarm.rectifier === 1 ? "Pending" : "Resolved"
-            rectifier.alarm_severity = "Minor"
-            rectifier.created_at = alarm.created_at
-            rectifier.updated_at = alarm.updated_at
-            rectifier.id = count
-            count++;
-
-            alarmsFor30Days.push(rectifier)
-
-            let optical = {}
-            optical.site_name = alarm.site_name
-            optical.site_ip = alarm.site_ip
-            optical.alarm_type = "Optical Alarm"
-            optical.alarm_status = alarm.optical === 1 ? "Pending" : "Resolved"
-            optical.alarm_severity = "Critical"
-            optical.created_at = alarm.created_at
-            optical.updated_at = alarm.updated_at
-            optical.id = count
-            count++;
-
-            alarmsFor30Days.push(optical)
-
-            let radio = {}
-            radio.site_name = alarm.site_name
-            radio.site_ip = alarm.site_ip
-            radio.alarm_type = "Radio Alarm"
-            radio.alarm_status = alarm.radio === 1 ? "Pending" : "Resolved"
-            radio.alarm_severity = "Critical"
-            radio.created_at = alarm.created_at
-            radio.updated_at = alarm.updated_at
-            radio.id = count
-            count++;
-
-            alarmsFor30Days.push(radio)
-        });
+        alarmsFor30Days = breakDownAlarmsArray(new30dayAlarms);
     }
     appStore.dispatch(addIBSAlarms30DaysToStore(alarmsFor30Days));
 }
 
+/**
+ * breaks down each of the alarms 
+ * in the alarms array
+ * into individual alarms
+ * @param {alarmArray} alarmsArray 
+ */
+function breakDownAlarmsArray(alarmArray) {
+    let count = 1;
+    let newArray = [];
+    alarmArray.forEach((alarm) => {
+        /**
+         * break down each new alarm update into 
+         * new alarms using alarm type and status
+         */
+        let power = {}
+
+        power.site_name = alarm.site_name
+        power.site_ip = alarm.site_ip
+        power.alarm_type = "Power Alarm"
+        power.alarm_status = alarm.power === 1 ? "Pending" : "Resolved"
+        power.alarm_severity = "Critical"
+        power.created_at = alarm.created_at
+        power.updated_at = alarm.updated_at
+        power.id = count
+        count++;
+
+        newArray.push(power)
+
+        let rectifier = {}
+        rectifier.site_name = alarm.site_name
+        rectifier.site_ip = alarm.site_ip
+        rectifier.alarm_type = "Rectifier Alarm"
+        rectifier.alarm_status = alarm.rectifier === 1 ? "Pending" : "Resolved"
+        rectifier.alarm_severity = "Minor"
+        rectifier.created_at = alarm.created_at
+        rectifier.updated_at = alarm.updated_at
+        rectifier.id = count
+        count++;
+
+        newArray.push(rectifier)
+
+        let optical = {}
+        optical.site_name = alarm.site_name
+        optical.site_ip = alarm.site_ip
+        optical.alarm_type = "Optical Alarm"
+        optical.alarm_status = alarm.optical === 1 ? "Pending" : "Resolved"
+        optical.alarm_severity = "Critical"
+        optical.created_at = alarm.created_at
+        optical.updated_at = alarm.updated_at
+        optical.id = count
+        count++;
+
+        newArray.push(optical)
+
+        let radio = {}
+        radio.site_name = alarm.site_name
+        radio.site_ip = alarm.site_ip
+        radio.alarm_type = "Radio Alarm"
+        radio.alarm_status = alarm.radio === 1 ? "Pending" : "Resolved"
+        radio.alarm_severity = "Critical"
+        radio.created_at = alarm.created_at
+        radio.updated_at = alarm.updated_at
+        radio.id = count
+        count++;
+
+        newArray.push(radio)
+    });
+    return newArray;
+}
+
+/**
+ * sets the redux store for alarms to 
+ * be used in view for `last 7 days`
+ */
 export async function fetchAlarmsForLast7Days() {
 
     // get alarms from state
@@ -387,29 +406,9 @@ export async function fetchAlarmsForLast12Hrs() {
     let t12HrsAgo = subHours(new Date(), 12);
     let alarmsFor12Hrs = [];
 
-    // filter alarms for the last 12Hrs
-    alarmsSet.forEach(alarm => {
-        /**
-         * convert timestamp to date object
-         */
-        let alarmTimeToDate = parse(
-            alarm.updated_at,
-            'yyyy-MM-dd hh:mm:ss a',
-            new Date()
-        );
-
-        /**
-         * check if timestamp is 
-         * within 12 hours ago
-         */
-        if (isAfter(alarmTimeToDate, t12HrsAgo)) {
-            alarmsFor12Hrs.push(alarm);
-        }
-    });
-    appStore.dispatch(addIBSAlarms12HrsToStore(alarmsFor12Hrs));
-
     /**
-     * check if any alarms were retrieved ffrom the
+     * check if any alarms were retrieved from the
+     * store
      */
     if (alarmsSet.length > 0) {
         // filter alarms for the last 12Hrs
@@ -433,4 +432,23 @@ export async function fetchAlarmsForLast12Hrs() {
         });
     }
     appStore.dispatch(addIBSAlarms12HrsToStore(alarmsFor12Hrs));
+}
+
+export async function fetchAlarmsForRange(startDate, endDate) {
+    /**
+     * these are the alarms to be 
+     * dispatched to the redux store
+     */
+    let alarmsForRange = [];
+
+    /**
+     * this are the alarms immediately 
+     * fetched from the REST API
+     */
+    let rangeAlarms = await fetchAlarmsByDateRange(startDate, endDate)
+
+    if (rangeAlarms.length > 0) {
+        alarmsForRange = breakDownAlarmsArray(rangeAlarms);
+    }
+    appStore.dispatch(addIBSAlarmsRangeToStore(alarmsForRange));
 }

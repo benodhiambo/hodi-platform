@@ -22,10 +22,11 @@ class IBSAlarmsTypeRectifierView extends Component {
                     >
                         <DataTable
                             noHeader
-                            defaultSortField="updatedAt"
+                            defaultSortField="updated_at"
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
+                            noDataComponent="No Rectifier Alarms Received"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}

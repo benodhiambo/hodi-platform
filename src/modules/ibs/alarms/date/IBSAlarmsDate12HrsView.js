@@ -21,10 +21,11 @@ class IBSAlarmsDate12HrsView extends Component {
                     >
                         <DataTable
                             noHeader
-                            defaultSortField="updatedAt"
+                            defaultSortField="updated_at"
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
+                            noDataComponent="No Alarms Recorded in the last 12 Hours"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}

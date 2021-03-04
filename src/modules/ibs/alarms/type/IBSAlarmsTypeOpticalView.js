@@ -21,11 +21,11 @@ class IBSAlarmsTypeOpticalView extends Component {
                     >
                         <DataTable
                             noHeader
-                            defaultSortField="updatedAt"
+                            defaultSortField="updated_at"
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
-                            noDataComponent="There are no Optical Alarms received"
+                            noDataComponent="No Optical Alarms received"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}

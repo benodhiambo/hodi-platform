@@ -39,3 +39,9 @@ export const addIBSAlarms24HrsToStore = ibsAlarms24Hrs => ({
     type: ADD_IBS_ALARMS_24_HRS,
     payload: { ibsAlarms24Hrs }
 });
+
+export const ADD_IBS_ALARMS_RANGE = 'ADD_IBS_ALARMS_RANGE';
+export const addIBSAlarmsRangeToStore = ibsAlarmsRange => ({
+    type: ADD_IBS_ALARMS_RANGE,
+    payload: { ibsAlarmsRange }
+});

@@ -6,7 +6,7 @@ import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import { tableColumns } from "../../config";
 import { format } from "date-fns";
 import { connect } from "react-redux";
-import { fetchAlarmsByDate, fetchAlarmsByDateRange } from "../../redux/ibsAlarmsActions";
+import { fetchAlarmsByDate, fetchAlarmsForRange } from "../../redux/ibsAlarmsActions";
 import { globalRowStyles } from "../../../../config";
 
 class IBSAlarmsDateRangeView extends Component {
@@ -15,18 +15,9 @@ class IBSAlarmsDateRangeView extends Component {
     }; 
 
     onChange = date => {
-
         this.dateSelected.date[0] = date[0];
         this.dateSelected.date[1] = date[1];
-
-        let startingDate = format(this.dateSelected.date[0], "yyyy-MM-dd");
-        let endingDate = format(this.dateSelected.date[1], "yyyy-MM-dd");
-
-        if( startingDate === endingDate) {
-            this.getAlarmsForDate(startingDate);
-        } else {
-            this.getAlarmsForDateRange();
-        }
+        this.getAlarmsForDateRange();
     }
 
     getStartingDate() {
@@ -46,13 +37,13 @@ class IBSAlarmsDateRangeView extends Component {
     getAlarmsForDateRange() {
         let dateOne = this.getStartingDate();
         let dateTwo = this.getEndingDate();
-        fetchAlarmsByDateRange(dateOne, dateTwo);
+        fetchAlarmsForRange(dateOne, dateTwo)
     }
 
     render() {
         const tableData = {
             columns: tableColumns,
-            data: this.props.ibsAlarmsDate[0],
+            data: this.props.ibsAlarmsRange[0],
         };
 
         return (
@@ -83,6 +74,7 @@ class IBSAlarmsDateRangeView extends Component {
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
+                            noDataComponent="No Alarms Recorded in the Range Selected"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}
@@ -97,7 +89,7 @@ class IBSAlarmsDateRangeView extends Component {
 function mapStateToProps(state) {
     return {
         ibsAlarms: state.ibsAlarms,
-        ibsAlarmsDate: state.ibsAlarmsDate
+        ibsAlarmsRange: state.ibsAlarmsRange
     };
 }
 

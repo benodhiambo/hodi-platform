@@ -1,5 +1,3 @@
-import { ADD_IBS_ALARM, UPDATE_IBS_ALARM } from "./ibsAlarmsActions";
-
 export const ibsInitialState = [];
 
 export const ibsAlarmsReducer = (state = ibsInitialState, action) => {
@@ -106,6 +104,21 @@ export const ibsAlarms24HrsReducer = (state = ibsInitialState, action) => {
             return [
                 ...state,
                 action.payload.ibsAlarms24Hrs
+            ]
+
+        default:
+            return state;
+    }
+};
+
+export const ibsAlarmsRangeReducer = (state = ibsInitialState, action) => {
+    switch (action.type) {
+        case 'ADD_IBS_ALARMS_RANGE':
+
+            state.splice(0,state.length);
+            return [
+                ...state,
+                action.payload.ibsAlarmsRange
             ]
 
         default:

@@ -22,11 +22,11 @@ class IBSAlarmsStatusClosedView extends Component {
                     >
                         <DataTable
                             noHeader
-                            defaultSortField="updatedAt"
+                            defaultSortField="updated_at"
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
-                            noDataComponent="There are no Closed Alarms recorded"
+                            noDataComponent="No Closed Alarms Recorded"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}

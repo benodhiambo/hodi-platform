@@ -22,10 +22,11 @@ class IBSAlarmsTypeRadioView extends Component {
                     >
                         <DataTable
                             noHeader
-                            defaultSortField="updatedAt"
+                            defaultSortField="updated_at"
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
+                            noDataComponent="No Radio Alarms Received"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}

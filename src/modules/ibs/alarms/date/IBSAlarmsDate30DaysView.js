@@ -34,6 +34,7 @@ class IBSAlarmsDate30DaysView extends Component {
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
+                            noDataComponent="No Alarms Recorded in the last 30 Days"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}

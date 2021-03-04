@@ -30,6 +30,7 @@ class IBSAlarmsSeverityCriticalView extends Component {
                             defaultSortAsc={false}
                             pagination
                             paginationPerPage="15"
+                            noDataComponent="No Critical Alarms Recorded"
                             dense
                             highlightOnHover
                             conditionalRowStyles={globalRowStyles}

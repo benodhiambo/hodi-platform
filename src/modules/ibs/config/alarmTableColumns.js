@@ -5,6 +5,7 @@ export const columns = [
         sortable: true,
         center: true,
         width: '120px',
+        omit: true
     },
     {
         name: 'Site name',

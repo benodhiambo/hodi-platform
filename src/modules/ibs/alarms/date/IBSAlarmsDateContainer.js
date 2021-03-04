@@ -82,8 +82,14 @@ class IBSAlarmsDateContainer extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.state.alarmCount.days7 = "(" + this.props.ibsAlarms7Days.length + ")";
-            this.state.alarmCount.days30 = "(" + this.props.ibsAlarms30Days.length + ")";
+            if (this.props.ibsAlarms7Days !== undefined) {
+                this.state.alarmCount.days7 = "(" + this.props.ibsAlarms7Days.length + ")";
+                this.state.alarmCount.days30 = "(" + this.props.ibsAlarms30Days.length + ")";
+            } else {
+                this.state.alarmCount.days7 = "(0)";
+                this.state.alarmCount.days30 = "(0)";
+            }
+
         }, 3000);
     }
 
